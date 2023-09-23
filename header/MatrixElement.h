@@ -9,6 +9,7 @@ private:
     int value;
 public:
     MatrixElement(std::string matrix, int rowID, int colID, int value);// 矩阵元素类的构造函数
+    MatrixElement();//矩阵元素类的无参构造函数
     void setMatrixElement(std::string matrix, int rowID, int colID, int value);//矩阵元素类的set函数
     void setMatrix(std::string matrix); //矩阵的set函数
     void setRowID(int rowID); //行坐标的set函数

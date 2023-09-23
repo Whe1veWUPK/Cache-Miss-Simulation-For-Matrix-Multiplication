@@ -5,7 +5,7 @@ private:
     int width;//Cache的行宽
     int numOfLines;//Cache的行数
     int *flags;  //LRU 算法所需要的记录flag
-    bool *isFull;   //记录某一行是否为空 
+    bool *isEmpty;   //记录某一行是否为空 
 
 public:
     MatrixElement**cache;//模拟Cache
@@ -18,5 +18,6 @@ public:
     void initial();      // Cache类的 初始化函数
     void insert(MatrixElement *elements); // Cache类的 insert函数
     void replace(MatrixElement *elements); //Cache类的 replace函数 (满则替换) （根据LRU算法）
+    bool query(MatrixElement element);//Cache 类的 query 函数 （访问存放在Cache里面的元素）
 };
 #endif

@@ -55,5 +55,11 @@ int **readMatrix(std::string filepath){
     // }
       return matrix;
 }
+// int main(){
+//       readMatrix("A.txt");
+//       readMatrix("B.txt");
+//       system("pause");
+//       return 0;
+// }
 
 

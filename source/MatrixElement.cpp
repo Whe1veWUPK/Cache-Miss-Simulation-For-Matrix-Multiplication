@@ -4,6 +4,9 @@
 MatrixElement::MatrixElement(std::string matrix, int rowID, int colID, int value){ 
     setMatrixElement(matrix, rowID, colID, value);
 }
+MatrixElement::MatrixElement(){
+    setMatrixElement("None", -1, -1, -1);
+}
 void MatrixElement::setMatrixElement(std::string matrix, int rowID, int colID, int value){ 
     setMatrix(matrix);
     setRowID(rowID);
