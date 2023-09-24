@@ -1,5 +1,6 @@
-#ifndef CACHE_H
-#define CACHE_H
+#ifndef CACHE_HPP
+#define CACHE_HPP
+#include "MatrixElement.hpp"
 class Cache{
 private:
     int width;//Cache的行宽

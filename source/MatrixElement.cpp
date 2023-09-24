@@ -1,5 +1,5 @@
 #include<iostream>
-#include "MatrixElement.h"
+#include "MatrixElement.hpp"
 
 MatrixElement::MatrixElement(std::string matrix, int rowID, int colID, int value){ 
     setMatrixElement(matrix, rowID, colID, value);

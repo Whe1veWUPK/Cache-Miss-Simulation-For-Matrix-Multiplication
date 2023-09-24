@@ -1,6 +1,6 @@
 #include<iostream>
-#include "MatrixElement.h"
-#include "Cache.h"
+
+#include "Cache.hpp"
 
 Cache::Cache(int width,int numOfLines){
     setCache(width, numOfLines);

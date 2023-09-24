@@ -1,5 +1,5 @@
-#ifndef MATRIXELEMENT_H
-#define MATRIXELEMENT_H
+#ifndef MATRIXELEMENT_HPP
+#define MATRIXELEMENT_HPP
 
 class MatrixElement{ // 矩阵元素类的声明
 private:

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "ReadMatrix.h"
+#include "ReadMatrix.hpp"
 //从文件中读取矩阵的源文件 内部有函数的具体定义 （Disk -> MainMemory）
 
 
@@ -22,14 +22,12 @@ int getLines(std::string filepath){
    }
    return lineCount;
 }
-int **readMatrix(std::string filepath){
-    //从文件中读取矩阵到内存中 
-    int**matrix;
-    int size = getLines(filepath);
-    matrix = new int *[size];
-    for (int i = 0; i < size;++i){
-      matrix[i] = new int[size];
-    }
+void readMatrix(std::string filepath,int**matrix){
+    //从文件中读取矩阵到内存中
+   
+   int size = getLines(filepath);
+  
+   
     std::fstream fin(filepath, std::ios::in);
     if(!fin){
       std::cerr << "Can not open the file"
@@ -53,7 +51,7 @@ int **readMatrix(std::string filepath){
     //   }
     //   std::cout << "\n";
     // }
-      return matrix;
+    
 }
 // int main(){
 //       readMatrix("A.txt");
