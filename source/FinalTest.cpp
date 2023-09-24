@@ -6,34 +6,64 @@
 int **matrixA;
 int **matrixB;
 void testIJK(Cache myCache){
-    int size = getLines("A.txt");
+    int n = getLines("A.txt");
     int missNum = 0;
     int w = myCache.getWidth();
-    int theoryMissNum = (size * size * size / w) * (1 / size + 1 + w);
+    int theoryMissNum = (n * n * n / w) * (1 / n + 1 + w);
     //initial matrixC
-    int **matrixC = new int *[size];
-    for (int i = 0; i < size;++i){
-        matrixC[i] = new int[size];
+    int **matrixC = new int *[n];
+    for (int i = 0; i < n;++i){
+        matrixC[i] = new int[n];
     }
-    for (int i = 0; i < size;++i){
-        for (int j = 0; j < size;++j){
+    for (int i = 0; i < n;++i){
+        for (int j = 0; j < n;++j){
             matrixC[i][j] = -1;
         }
     }
     //do matrix multiple in "ijk" order
-    for (int i = 0; i < size;++i){
-        for (int j = 0; j < size;++j){
-            for (int k = 0; k < size;++k){
+    for (int i = 0; i < n;++i){
+        for (int j = 0; j < n;++j){
+            for (int k = 0; k < n;++k){
                 //read matrixA
                 MatrixElement tempA("A", i, k, matrixA[i][k]);
                 if(!myCache.query(tempA)){
+                    // std::cout << "false"
+                    //           << "\n";
                     //not find
                     ++missNum;
                     //then insert
-                    MatrixElement *block = new MatrixElement[w];
-                  
+                    int insertSize = std::min(w, n - k); //这里取Cache行宽和主存一行剩余数据的长度的最小值作为插入的size 这样可以确保不会换行
+                    MatrixElement *insertBlock = new MatrixElement[w];
+                    for (int i1 = 0; i1 < w;++i1){
+                        if(i1<insertSize){
+                             insertBlock[i1] = MatrixElement("A", i, i1 + k, matrixA[i][i1 + k]);
+                        }
+                        else{//剩余部分插入空数据
+                             insertBlock[i1] = MatrixElement("None", -1, -1, -1);
+                        }
+                    }
+                    myCache.insert(insertBlock);
+                }
+                //read matrixB
+                MatrixElement tempB("B", i, k, matrixB[k][j]);
+                if(!myCache.query(tempB)){
+                    //如果没在Cache中找到
+                    ++missNum;
+                    //插入
+                    int insertSize = std::min(w, n - j);//这里取Cache行宽和主存一行剩余数据的长度的最小值作为插入的size
+                    MatrixElement *insertBlock = new MatrixElement[w];
+                    for (int i1 = 0; i1 < w;++i1){
+                        if(i1<insertSize){
+                             insertBlock[i1] = MatrixElement("B", k, j + i1, matrixB[k][j + i1]);
+                        }
+                        else{//剩余部分插入空数据
+                             insertBlock[i1] = MatrixElement("None", -1, -1, -1);
+                        }
+                        myCache.insert(insertBlock);
+                    }
                 }
             }
+
         
         }
     }
