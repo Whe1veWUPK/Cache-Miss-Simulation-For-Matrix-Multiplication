@@ -86,7 +86,7 @@ void Cache::replace(MatrixElement*elements){
     int temp = -(1 << 30);
     //寻找牺牲行 flags数组中的最大值
     for (int i = 0; i < this->numOfLines;++i){
-        if(this->flags[i]>=temp){
+        if(this->flags[i]>temp){
             temp = this->flags[i];
             victimLine = i; 
         }
