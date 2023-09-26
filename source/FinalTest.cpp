@@ -92,8 +92,8 @@ void testIJK(Cache myCache){
     }
     std::cout << "In IJK order:"
               << "\n";
-    std::cout << "Practical miss time is: " << missNum << "\n";
-    std::cout << "Theroy miss time is: " << theoryMissNum << "\n";
+    std::cout << "Practical miss times are: " << missNum << "\n";
+    std::cout << "Theroy miss times are: " << theoryMissNum << "\n";
 }
 void testIKJ(Cache myCache){
     int n = getLines("A.txt");
@@ -181,8 +181,8 @@ void testIKJ(Cache myCache){
     }
     std::cout << "In IKJ order:"
               << "\n";
-    std::cout << "Practical miss time is: " << missNum << "\n";
-    std::cout << "Theroy miss time is: " << theoryMissNum << "\n";
+    std::cout << "Practical miss times are: " << missNum << "\n";
+    std::cout << "Theroy miss times are: " << theoryMissNum << "\n";
 }
 
 void finalTest(){
@@ -250,7 +250,15 @@ void finalTest(){
     testIKJ(cache);
 }
 int main(){
-    finalTest();
-    system("pause");
+    char flag = 'Y';
+    while(flag=='Y'){
+        finalTest();
+        std::cout << "Continue ? Y or N"
+                  << "\n";
+        std::cin >> flag;
+        system("cls");
+    }
+    
+    
     return 0;
 }
