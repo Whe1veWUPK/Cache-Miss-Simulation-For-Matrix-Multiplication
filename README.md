@@ -2,8 +2,6 @@
 This project is a cache's miss's simulation for matrix multiplication.
 # 东南大学 数据结构与算法实践 Project 1
 ## 项目结构
-* .vscode 里面是本人的vscode个人配置 可忽略
-* exe 存放着可执行文件（FinalTest.exe）
 * header 存放着所有的.hpp文件
 * source 存放着所有的.cpp文件
 
